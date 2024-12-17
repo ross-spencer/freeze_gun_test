@@ -1,6 +1,7 @@
 """Validation tests."""
 
 import logging
+import multiprocessing
 import time
 from datetime import datetime, timezone
 
@@ -19,7 +20,15 @@ logger = logging.getLogger(__name__)
 
 
 def check_timestamps():
+    """Multiprocessing test..."""
+    sources = [[1], [2], [3]]
+    with multiprocessing.Pool() as pool:
+        _ = pool.starmap(_check_timestamps, sources)
+
+
+def _check_timestamps(sources: list):
     """Ensure timestamps are all within a given threshold from now."""
+    logger.info("sources: %s", sources)
     validation_timestamp = datetime.now(timezone.utc)
     logger.error("timestamp: %s", validation_timestamp)
     assert False, "all tests fail, check the log line above"
