@@ -26,8 +26,9 @@ def check_timestamps():
         _ = pool.starmap(_check_timestamps, sources)
 
 
-def _check_timestamps(sources: list):
+def _check_timestamps(sources: list):  # pylint: disable=W0613
     """Ensure timestamps are all within a given threshold from now."""
-    logger.info("sources: %s", sources)
     validation_timestamp = datetime.now(timezone.utc)
-    assert str(validation_timestamp).startswith("2015-07-12 12:30:00")
+    comparison = "2015-07-12 12:30:00"
+    logger.error("timestamp is: %s (should be: '%s')", validation_timestamp, comparison)
+    assert str(validation_timestamp).startswith(comparison)
