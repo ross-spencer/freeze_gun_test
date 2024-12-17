@@ -1,0 +1,9 @@
+.idea
+__pycache__
+venv
+*.egg*
+dist/*
+*.notes
+*.key
+*.crt
+*.pem
