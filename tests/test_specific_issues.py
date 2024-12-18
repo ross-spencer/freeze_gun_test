@@ -2,7 +2,11 @@
 
 from freezegun import freeze_time
 
-from src.validation.validation import _check_timestamps, check_timestamps
+from src.validation.validation import (
+    _check_timestamps,
+    check_timestamps,
+    test_multi_processing,
+)
 
 
 def test_freeze_gun():
@@ -16,3 +20,8 @@ def test_freeze_gun():
 def test_freeze_gun_okay():
     """Test freezegun."""
     _check_timestamps([])
+
+
+def test_multiprocessing():
+    """Freezegun"""
+    test_multi_processing()
